@@ -69,6 +69,15 @@ RSpec.describe Matomo do
       expect(visit.actions_per_visit).to eq(0)
     end
 
+    it "scopes referrers by path" do
+      VCR.use_cassette("top_referrers_by_path") do
+        subject = Matomo.top_referrers(path: "/latest")
+        expect(subject.length).to eq(5)
+        expect(subject[0].label).to eq("google.com")
+        expect(subject[0].visits).to eq(13)
+      end
+    end
+
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_referrers_access_denied") do

@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://demo.matomo.org/?date=last30&filter_limit=5&format=JSON&idSite=7&method=SitesManager.getSiteUrlsFromId&module=API&period=range
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Sep 2018 00:06:39 GMT
+      Server:
+      - Apache/2.2
+      Cache-Control:
+      - max-age=691200
+      - must-revalidate
+      Expires:
+      - Sat, 06 Oct 2018 00:06:39 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '49'
+      Content-Type:
+      - application/json; charset=utf-8
+      Via:
+      - 1.1 alproxy
+    body:
+      encoding: ASCII-8BIT
+      string: '["http:\/\/forum.matomo.org"]'
+    http_version: 
+  recorded_at: Fri, 28 Sep 2018 00:06:39 GMT
+- request:
+    method: get
+    uri: https://demo.matomo.org/?date=last30&filter_limit=5&format=JSON&idSite=7&method=Referrers.getAll&module=API&period=range&segment=pageUrl==http://forum.matomo.org/latest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Sep 2018 00:06:42 GMT
+      Server:
+      - Apache/2.2
+      Cache-Control:
+      - max-age=691200
+      - must-revalidate
+      Expires:
+      - Sat, 06 Oct 2018 00:06:42 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '279'
+      Content-Type:
+      - application/json; charset=utf-8
+      Via:
+      - 1.1 alproxy
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"label":"google.com","nb_visits":13,"nb_actions":128,"max_actions":43,"sum_visit_length":9604,"bounce_count":0,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":12,"sum_daily_nb_users":0,"referer_type":2},{"label":"matomo.org","nb_visits":10,"nb_actions":123,"max_actions":49,"sum_visit_length":4508,"bounce_count":0,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":10,"sum_daily_nb_users":0,"referer_type":3},{"label":"developer.matomo.org","nb_visits":3,"nb_actions":14,"max_actions":9,"sum_visit_length":678,"bounce_count":1,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":2,"sum_daily_nb_users":0,"referer_type":3},{"label":"ahrefs.com","nb_visits":1,"nb_actions":9,"max_actions":9,"sum_visit_length":665,"bounce_count":0,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":1,"sum_daily_nb_users":0,"referer_type":3},{"label":"br.wordpress.org","nb_visits":1,"nb_actions":49,"max_actions":49,"sum_visit_length":4058,"bounce_count":0,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":1,"sum_daily_nb_users":0,"referer_type":3}]'
+    http_version: 
+  recorded_at: Fri, 28 Sep 2018 00:06:42 GMT
+recorded_with: VCR 4.0.0

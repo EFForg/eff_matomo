@@ -35,10 +35,12 @@ module Matomo
     end
   end
 
-  def self.top_referrers
-    resp = get({
-      method: "Referrers.getAll"
-    })
+  def self.top_referrers(**args)
+    params = { method: "Referrers.getAll" }
+    if args[:path]
+      params[:segment] = "pageUrl==#{tracked_site_url}#{args[:path]}"
+    end
+    resp = get(params)
     return [] if resp.response.code != "200"
     resp.map{ |x| Referrer.new(x) }
   end
@@ -106,8 +108,9 @@ module Matomo
     ENV["MATOMO_SITE_ID"]
   end
 
+  # ##
+  # Gnarly base url for finding pages on the Matomo web portal
   def self.base_portal_url
-    # Gnarly base url for finding pages on the Matomo web portal
     "#{base_url}/index.php?module=CoreHome&action=index&"\
     "idSite=#{site_id}&period=#{default_api_params[:period]}&date=#{default_api_params[:date]}&updated=1#?"\
     "idSite=#{site_id}&period=#{default_api_params[:period]}&date=#{default_api_params[:date]}"\
@@ -122,5 +125,19 @@ module Matomo
       date: "last30",
       filter_limit: 5
     }
+  end
+
+  ##
+  # The full url of a tracked page is sometimes required by the API, eg. when
+  # scoping by page.  We can load the base url from the environment or by
+  # making an API call.
+  def self.tracked_site_url
+    return ENV["MATOMO_TRACKED_SITE_URL"] if ENV["MATOMO_TRACKED_SITE_URL"]
+    return @tracked_site_url if @tracked_site_url
+    resp = get({
+      method: "SitesManager.getSiteUrlsFromId"
+    })
+    return nil if resp.response.code != "200" || resp.length == 0
+    @tracked_site_url = resp[0]
   end
 end
