@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://demo.matomo.org/?date=2018-09-09,2018-09-25&filter_limit=5&format=JSON&idSite=7&method=Referrers.getAll&module=API&period=range
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Oct 2018 18:56:22 GMT
+      Server:
+      - Apache/2.2
+      Cache-Control:
+      - max-age=691200
+      - must-revalidate
+      Expires:
+      - Wed, 17 Oct 2018 18:56:22 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '381'
+      Content-Type:
+      - application/json; charset=utf-8
+      Via:
+      - 1.1 alproxy
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"label":"Keyword not defined","nb_visits":9080,"nb_actions":15523,"max_actions":43,"sum_visit_length":894290,"bounce_count":5874,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":8391,"sum_daily_nb_users":0,"referer_type":2},{"label":"matomo.org","nb_visits":248,"nb_actions":1382,"max_actions":62,"sum_visit_length":77552,"bounce_count":74,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":228,"sum_daily_nb_users":0,"referer_type":3},{"label":"developer.matomo.org","nb_visits":40,"nb_actions":288,"max_actions":68,"sum_visit_length":21732,"bounce_count":10,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":35,"sum_daily_nb_users":0,"referer_type":3},{"label":"GitHub","nb_visits":35,"nb_actions":94,"max_actions":26,"sum_visit_length":4165,"bounce_count":18,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":34,"sum_daily_nb_users":0,"url":"github.com","logo":"plugins\/Morpheus\/icons\/dist\/socials\/github.com.png","referer_type":7},{"label":"translate.googleusercontent.com","nb_visits":22,"nb_actions":38,"max_actions":5,"sum_visit_length":3313,"bounce_count":12,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":22,"sum_daily_nb_users":0,"referer_type":3}]'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2018 18:56:22 GMT
+recorded_with: VCR 4.0.0

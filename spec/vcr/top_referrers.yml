@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://demo.matomo.org/?date=last30&filter_limit=5&format=JSON&idSite=7&method=Referrers.getAll&module=API&period=range
+    uri: https://demo.matomo.org/?date=2018-09-09,2018-10-09&filter_limit=5&format=JSON&idSite=7&method=Referrers.getAll&module=API&period=range
     body:
       encoding: US-ASCII
       string: ''
@@ -19,25 +19,25 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 27 Sep 2018 00:55:00 GMT
+      - Tue, 09 Oct 2018 18:56:19 GMT
       Server:
       - Apache/2.2
       Cache-Control:
       - max-age=691200
       - must-revalidate
       Expires:
-      - Fri, 05 Oct 2018 00:55:00 GMT
+      - Wed, 17 Oct 2018 18:56:19 GMT
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '390'
+      - '388'
       Content-Type:
       - application/json; charset=utf-8
       Via:
       - 1.1 alproxy
     body:
       encoding: ASCII-8BIT
-      string: '[{"label":"t.co","nb_visits":15324,"nb_actions":26136,"max_actions":43,"sum_visit_length":1529145,"bounce_count":9885,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":14206,"sum_daily_nb_users":0,"referer_type":2},{"label":"matomo.org","nb_visits":482,"nb_actions":2560,"max_actions":62,"sum_visit_length":136853,"bounce_count":143,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":456,"sum_daily_nb_users":0,"referer_type":3},{"label":"developer.matomo.org","nb_visits":70,"nb_actions":465,"max_actions":68,"sum_visit_length":31254,"bounce_count":16,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":61,"sum_daily_nb_users":0,"referer_type":3},{"label":"GitHub","nb_visits":69,"nb_actions":185,"max_actions":26,"sum_visit_length":9719,"bounce_count":38,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":68,"sum_daily_nb_users":0,"url":"github.com","logo":"plugins\/Morpheus\/icons\/dist\/socials\/github.com.png","referer_type":7},{"label":"translate.googleusercontent.com","nb_visits":35,"nb_actions":68,"max_actions":5,"sum_visit_length":6914,"bounce_count":17,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":35,"sum_daily_nb_users":0,"referer_type":3}]'
+      string: '[{"label":"Keyword not defined","nb_visits":16992,"nb_actions":28853,"max_actions":43,"sum_visit_length":1659716,"bounce_count":11023,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":15735,"sum_daily_nb_users":0,"referer_type":2},{"label":"matomo.org","nb_visits":439,"nb_actions":2331,"max_actions":62,"sum_visit_length":124756,"bounce_count":147,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":414,"sum_daily_nb_users":0,"referer_type":3},{"label":"developer.matomo.org","nb_visits":66,"nb_actions":485,"max_actions":68,"sum_visit_length":39745,"bounce_count":15,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":54,"sum_daily_nb_users":0,"referer_type":3},{"label":"GitHub","nb_visits":60,"nb_actions":162,"max_actions":26,"sum_visit_length":9600,"bounce_count":31,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":59,"sum_daily_nb_users":0,"url":"github.com","logo":"plugins\/Morpheus\/icons\/dist\/socials\/github.com.png","referer_type":7},{"label":"translate.googleusercontent.com","nb_visits":39,"nb_actions":63,"max_actions":5,"sum_visit_length":3740,"bounce_count":25,"nb_visits_converted":0,"sum_daily_nb_uniq_visitors":39,"sum_daily_nb_users":0,"referer_type":3}]'
     http_version: 
-  recorded_at: Thu, 27 Sep 2018 00:55:01 GMT
+  recorded_at: Tue, 09 Oct 2018 18:56:19 GMT
 recorded_with: VCR 4.0.0

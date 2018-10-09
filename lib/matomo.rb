@@ -36,7 +36,9 @@ module Matomo
   end
 
   def self.top_referrers(**args)
-    params = { method: "Referrers.getAll" }
+    params = { method: "Referrers.getAll" }.merge(
+      date_range_params(args[:start_date], args[:end_date])
+    )
     if args[:path]
       params[:segment] = "pageUrl==#{tracked_site_url}#{args[:path]}"
     end
@@ -124,6 +126,16 @@ module Matomo
       period: "range",
       date: "last30",
       filter_limit: 5
+    }
+  end
+
+  def self.date_range_params(start_date, end_date)
+    date_format = "%Y-%m-%d"
+    end_date = end_date || Date.today
+    start_date = start_date || end_date - 30.days
+    {
+      period: "range",
+      date: start_date.strftime(date_format) + "," + end_date.strftime(date_format)
     }
   end
 
