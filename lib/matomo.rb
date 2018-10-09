@@ -18,61 +18,62 @@ module Matomo
       return 0 unless @actions and @visits
       (@actions/@visits.to_f).round(1)
     end
+
+    def self.all() where end
+
+    def self.where(**args)
+      params = { method: "Referrers.getAll" }.merge(
+        Matomo.date_range_params(args[:start_date], args[:end_date])
+      )
+      if args[:path]
+        params[:segment] = "pageUrl==#{Matomo.tracked_site_url}#{args[:path]}"
+      end
+      resp = Matomo.get(params)
+      return [] if resp.response.code != "200"
+      resp.map{ |x| new(x) }
+    end
   end
 
   class VisitedPage
     attr_accessor :label, :hits, :visits
 
-    def initialize(parent_page, params)
-      @parent_page = parent_page
+    def initialize(base_path, params)
+      @base_path = base_path
       @label = params["label"].sub!(/^\//, "") if params["label"]
       @hits = params["nb_hits"]
       @visits = params["nb_visits"]
     end
 
     def path
-      "/#{@parent_page}/#{@label}"
+      "/#{@base_path}/#{@label}"
     end
-  end
 
-  def self.top_referrers(**args)
-    params = { method: "Referrers.getAll" }.merge(
-      date_range_params(args[:start_date], args[:end_date])
-    )
-    if args[:path]
-      params[:segment] = "pageUrl==#{tracked_site_url}#{args[:path]}"
+    def self.where(**args)
+      get_subtables unless @subtables
+      # Remove leading and trailing slashes to match Matomo label format.
+      base_path = args[:base_path].gsub(/^\/|\/$/, "")
+      return [] unless @subtables[base_path]
+
+      resp = Matomo.get({
+        method: "Actions.getPageUrls",
+        idSubtable: @subtables[base_path],
+      })
+      return [] if resp.response.code != "200"
+      resp.map{ |x| new(base_path, x) }
     end
-    resp = get(params)
-    return [] if resp.response.code != "200"
-    resp.map{ |x| Referrer.new(x) }
-  end
 
-  def self.get_subtables
-    # Get a mapping from resource paths to Matomo page view subtable ids
-    resp = get({
-      method: "Actions.getPageUrls",
-      filter_limit: 50,
-    })
-    if resp.response.code == "200"
-      @subtables = resp.map{|x| [x["label"], x["idsubdatatable"]]}.to_h
-    else
-      @subtables = {}
+    def self.get_subtables
+      # Get a mapping from resource paths to Matomo page view subtable ids
+      resp = Matomo.get({
+        method: "Actions.getPageUrls",
+        filter_limit: 50,
+      })
+      if resp.response.code == "200"
+        @subtables = resp.map{|x| [x["label"], x["idsubdatatable"]]}.to_h
+      else
+        @subtables = {}
+      end
     end
-  end
-
-  def self.method_missing(name, *args)
-    # Add top_#{resource} methods to display Matomo page view subtables
-    super unless name.to_s.starts_with?("top_")
-    get_subtables unless @subtables
-    parent_page = name.to_s.sub("top_", "")
-    return [] unless @subtables[parent_page]
-
-    resp = get({
-      method: "Actions.getPageUrls",
-      idSubtable: @subtables[parent_page],
-    })
-    return [] if resp.response.code != "200"
-    resp.map{ |x| VisitedPage.new(parent_page, x) }
   end
 
   def self.visits_graph_url

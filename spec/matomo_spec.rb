@@ -9,7 +9,7 @@ RSpec.describe Matomo do
   describe "top pages" do
     subject do
       VCR.use_cassette("top_pages") do
-        Matomo.top_c
+        Matomo::VisitedPage.where(base_path: "/c")
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Matomo do
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_pages_access_denied") do
-          Matomo.top_articles
+          Matomo::VisitedPage.where(base_path: "/articles")
         end
       end
 
@@ -47,7 +47,7 @@ RSpec.describe Matomo do
   describe "top referrers" do
     subject do
       VCR.use_cassette("top_referrers") do
-        Matomo.top_referrers
+        Matomo::Referrer.all
       end
     end
 
@@ -71,14 +71,14 @@ RSpec.describe Matomo do
 
     it "scopes referrers by path" do
       VCR.use_cassette("top_referrers_by_path") do
-        subject = Matomo.top_referrers(path: "/latest")
+        subject = Matomo::Referrer.where(path: "/latest")
         expect(subject[0].visits).to eq(14)
       end
     end
 
     it "accepts a date range" do
       VCR.use_cassette("top_referrers_by_date_range") do
-        subject = Matomo.top_referrers(start_date: Time.now - 1.month, end_date: Time.now - 2.weeks)
+        subject = Matomo::Referrer.where(start_date: Time.now - 1.month, end_date: Time.now - 2.weeks)
         expect(subject.length).to eq(5)
         expect(subject[0].visits).to eq(9080)
       end
@@ -87,7 +87,7 @@ RSpec.describe Matomo do
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_referrers_access_denied") do
-          Matomo.top_referrers
+          Matomo::Referrer.all
         end
       end
 
