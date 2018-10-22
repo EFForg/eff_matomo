@@ -35,7 +35,7 @@ Add `<%= matomo_tracking_embed %>` to the footer of your application layout temp
 This gem provides allows users to import site usage data from Matomo to display in their application. It currently supports two types of data:
 
 **Referrers** show how users are reaching the application. Usage example:
-```
+```ruby
 # Get the top five referrers for the site
 referrers = Matomo::Referrer.top
 
@@ -54,7 +54,7 @@ end
 ```
 
 **Visited Pages** show the top pages within the application, both in terms of unique page views and overall number of hits. Usage example:
-```
+```ruby
 # Get the top pages under a certain path, for example under "/articles"
 pages = Matomo::VisitedPage.where(base_path: "/articles")
 
