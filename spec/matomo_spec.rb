@@ -47,7 +47,7 @@ RSpec.describe Matomo do
   describe "top referrers" do
     subject do
       VCR.use_cassette("top_referrers") do
-        Matomo::Referrer.all
+        Matomo::Referrer.top
       end
     end
 
@@ -87,7 +87,7 @@ RSpec.describe Matomo do
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_referrers_access_denied") do
-          Matomo::Referrer.all
+          Matomo::Referrer.top
         end
       end
 

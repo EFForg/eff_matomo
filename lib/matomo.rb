@@ -19,7 +19,7 @@ module Matomo
       (@actions/@visits.to_f).round(1)
     end
 
-    def self.all() where end
+    def self.top() where end
 
     def self.where(**args)
       params = { method: "Referrers.getAll" }.merge(
