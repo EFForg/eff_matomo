@@ -19,5 +19,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
   # your HTTP request service. You can also use fakeweb, webmock, and more
   c.hook_into :webmock
+  c.register_request_matcher :uri_without_date_param do |request_1, request_2|
+    request_1.uri.sub(/date=.*&/, "") == request_2.uri.sub(/date=.*&/, "")
+  end
 end
-
