@@ -7,7 +7,7 @@ The EFF Matomo gem provides utilities for integrating our Ruby applications with
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'eff_matomo'
+gem 'eff_matomo', require 'matomo'
 ```
 
 And then execute:
