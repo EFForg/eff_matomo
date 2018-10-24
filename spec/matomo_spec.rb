@@ -6,29 +6,36 @@ RSpec.describe Matomo do
     expect(Matomo::VERSION).not_to be nil
   end
 
-  describe "top pages" do
-    subject do
-      VCR.use_cassette("top_pages") do
-        Matomo::Page.under_path("/c")
-      end
-    end
-
-    it "returns top articles as an array" do
-      expect(subject.length).to eq(5)
-    end
-
-    it "exposes basic attributes about top articles" do
-      expect(subject[0].label).to eq("support-bugs")
-      expect(subject[0].visits).to eq(238)
-      expect(subject[0].hits).to eq(373)
-    end
-
-    it "exposes the page path" do
-      expect(subject[0].path).to eq("/c/support-bugs")
-    end
-
+  describe "Page" do
     it "survives empty inputs" do
       Matomo::Page.new(nil, {})
+    end
+
+    it "cleans up the label" do
+      page = Matomo::Page.new("/pages/my-page", "label" => "/my-page?foo=bar")
+      expect(page.label).to eq("my-page")
+    end
+
+    describe "pages under path" do
+      subject do
+        VCR.use_cassette("top_pages") do
+          Matomo::Page.under_path("/c")
+        end
+      end
+
+      it "returns top articles as an array" do
+        expect(subject.length).to eq(5)
+      end
+
+      it "exposes basic attributes about top articles" do
+        expect(subject[0].label).to eq("support-bugs")
+        expect(subject[0].visits).to eq(238)
+        expect(subject[0].hits).to eq(373)
+      end
+
+      it "exposes the page path" do
+        expect(subject[0].path).to eq("/c/support-bugs")
+      end
     end
 
     it "returns views by day for a single page" do
@@ -54,7 +61,7 @@ RSpec.describe Matomo do
     end
   end
 
-  describe "top referrers" do
+  describe "Referrer" do
     subject do
       VCR.use_cassette("top_referrers", :match_requests_on => [:method, :uri_without_date_param]) do
         Matomo::Referrer.top

@@ -35,13 +35,18 @@ module Matomo
   end
 
   class Page
-    attr_accessor :label, :hits, :visits, :path
+    attr_accessor :hits, :visits, :path
 
     def initialize(path, params)
       @path = path
-      @label = params["label"].sub!(/^\//, "") if params["label"]
+      @label = params["label"]
       @hits = params["nb_hits"]
       @visits = params["nb_visits"]
+    end
+
+    def label
+      return nil unless @label
+      @label.sub(/^\//, "").sub(/\?.*$/, "")
     end
 
     def self.under_path(base_path, **args)
