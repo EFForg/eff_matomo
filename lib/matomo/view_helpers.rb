@@ -13,7 +13,7 @@ module Matomo
       content_tag(:div, id: "anon-stats") do
         content_tag(:noscript) do
           content_tag(:img, src: matomo_tracking_url, style: "border:0", alt: "")
-        end
+        end +
         javascript_tag do
           "document.getElementById('anon-stats').innerHTML = '<img src=\"#{matomo_tracking_url}\"?urlref=' + encodeURIComponent(document.referrer) + 'style=\"border:0\" alt=\"\" />';".html_safe
         end
