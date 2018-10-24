@@ -45,18 +45,18 @@ referrers = Matomo::Referrer.where(start_date: Time.now - 1.month, end_date: Tim
 # Only show referrers for a certain page within the app
 referrers = Matomo::Referrer.where(path: "/action/my-important-action")
 
-# Access information about each referrers
+# Access information about each referrer
 referrers.each() do |referrer|
   puts referrer.label             # eg. "facebook.com"
   puts referrer.visits            # Number of times a visit came from this referrer
-  puts referrer.actions_per_visit # Average number of actions that occured during a visit
+  puts referrer.actions_per_visit # Average number of actions that occurred during a visit
 end
 ```
 
 **Visited Pages** show the top pages within the application, both in terms of unique page views and overall number of hits. Usage example:
 ```ruby
 # Get the top pages under a certain path, for example under "/articles"
-pages = Matomo::VisitedPage.where(base_path: "/articles")
+pages = Matomo::Page.under_path("/articles")
 
 # Access information about each page
 pages.each() do |page|

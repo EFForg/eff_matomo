@@ -34,7 +34,7 @@ module Matomo
     end
   end
 
-  class VisitedPage
+  class Page
     attr_accessor :label, :hits, :visits, :path
 
     def initialize(path, params)
@@ -45,10 +45,10 @@ module Matomo
       @visits = params["nb_visits"]
     end
 
-    def self.where(**args)
+    def self.under_path(base_path, **args)
       get_subtables unless @subtables
       # Remove leading and trailing slashes to match Matomo label format.
-      base_path = args[:base_path].gsub(/^\/|\/$/, "")
+      base_path = base_path.gsub(/^\/|\/$/, "")
       return [] unless @subtables[base_path]
 
       resp = Matomo.get({
@@ -60,7 +60,7 @@ module Matomo
     end
 
     ##
-    # Return format eg: { "2018-10-03": <Matomo::VisitedPage> }
+    # Return format eg: { "2018-10-03": <Matomo::Page> }
     def self.group_by_period(path, **args)
       params = {
         method: "Actions.getPageUrls",
