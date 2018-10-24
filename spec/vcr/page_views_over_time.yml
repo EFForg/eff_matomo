@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://demo.matomo.org/?date=last30&filter_limit=5&format=JSON&idSite=7&method=SitesManager.getSiteUrlsFromId&module=API&period=range
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Oct 2018 18:23:02 GMT
+      Server:
+      - Apache/2.2
+      Cache-Control:
+      - max-age=691200
+      - must-revalidate
+      Expires:
+      - Thu, 01 Nov 2018 18:23:02 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '49'
+      Content-Type:
+      - application/json; charset=utf-8
+      Via:
+      - 1.1 alproxy
+    body:
+      encoding: ASCII-8BIT
+      string: '["http:\/\/forum.matomo.org"]'
+    http_version: 
+  recorded_at: Wed, 24 Oct 2018 18:23:02 GMT
+- request:
+    method: get
+    uri: https://demo.matomo.org/?date=2018-09-22,2018-10-22&filter_limit=5&format=JSON&idSite=7&method=Actions.getPageUrls&module=API&period=day&segment=pageUrl==http://forum.matomo.org/c/support-bugs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Oct 2018 18:23:03 GMT
+      Server:
+      - Apache/2.2
+      Cache-Control:
+      - max-age=691200
+      - must-revalidate
+      Expires:
+      - Thu, 01 Nov 2018 18:23:03 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1191'
+      Content-Type:
+      - application/json; charset=utf-8
+      Via:
+      - 1.1 alproxy
+    body:
+      encoding: ASCII-8BIT
+      string: '{"2018-09-22":[{"label":"c","nb_visits":4,"nb_hits":4,"sum_time_spent":0,"nb_hits_with_time_generation":4,"min_time_generation":"0.219","max_time_generation":"0.511","entry_nb_visits":1,"entry_nb_actions":7,"entry_sum_visit_length":592,"entry_bounce_count":0,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.375,"idsubdatatable":1}],"2018-09-23":[{"label":"c","nb_visits":3,"nb_hits":4,"sum_time_spent":0,"nb_hits_with_time_generation":4,"min_time_generation":"0.461","max_time_generation":"5.717","exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"33%","avg_time_generation":1.789,"idsubdatatable":1}],"2018-09-24":[{"label":"c","nb_visits":5,"nb_hits":5,"sum_time_spent":0,"nb_hits_with_time_generation":5,"min_time_generation":"0.249","max_time_generation":"2.927","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.906,"idsubdatatable":1}],"2018-09-25":[{"label":"c","nb_visits":5,"nb_hits":11,"sum_time_spent":1,"nb_hits_with_time_generation":11,"min_time_generation":"0.184","max_time_generation":"2.77","entry_nb_visits":1,"entry_nb_actions":10,"entry_sum_visit_length":2177,"entry_bounce_count":0,"exit_nb_visits":2,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"40%","avg_time_generation":0.62,"idsubdatatable":1}],"2018-09-26":[{"label":"c","nb_visits":7,"nb_hits":13,"sum_time_spent":0,"nb_hits_following_search":1,"nb_hits_with_time_generation":13,"min_time_generation":"0.111","max_time_generation":"8.423","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.887,"idsubdatatable":1}],"2018-09-27":[{"label":"c","nb_visits":6,"nb_hits":8,"sum_time_spent":0,"nb_hits_with_time_generation":8,"min_time_generation":"0.013","max_time_generation":"4.266","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.845,"idsubdatatable":1}],"2018-09-28":[{"label":"c","nb_visits":10,"nb_hits":17,"sum_time_spent":41,"nb_hits_with_time_generation":17,"min_time_generation":"0.014","max_time_generation":"0.76","entry_nb_visits":3,"entry_nb_actions":20,"entry_sum_visit_length":3593,"entry_bounce_count":2,"exit_nb_visits":3,"avg_time_on_page":2,"bounce_rate":"67%","exit_rate":"30%","avg_time_generation":0.273,"idsubdatatable":1}],"2018-09-29":[{"label":"c","nb_visits":3,"nb_hits":4,"sum_time_spent":0,"nb_hits_with_time_generation":4,"min_time_generation":"0.431","max_time_generation":"1.623","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.8,"idsubdatatable":1}],"2018-09-30":[{"label":"c","nb_visits":2,"nb_hits":3,"sum_time_spent":0,"nb_hits_following_search":1,"nb_hits_with_time_generation":3,"min_time_generation":"0.23","max_time_generation":"0.468","exit_nb_visits":2,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"100%","avg_time_generation":0.389,"idsubdatatable":1}],"2018-10-01":[{"label":"c","nb_visits":4,"nb_hits":11,"sum_time_spent":12,"nb_hits_following_search":1,"nb_hits_with_time_generation":11,"min_time_generation":"0.123","max_time_generation":"1.183","exit_nb_visits":1,"avg_time_on_page":1,"bounce_rate":"0%","exit_rate":"25%","avg_time_generation":0.485,"idsubdatatable":1}],"2018-10-02":[{"label":"c","nb_visits":5,"nb_hits":9,"sum_time_spent":661,"nb_hits_with_time_generation":9,"min_time_generation":"0.157","max_time_generation":"0.669","avg_time_on_page":73,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.397,"idsubdatatable":1}],"2018-10-03":[{"label":"c","nb_visits":14,"nb_hits":44,"sum_time_spent":734,"nb_hits_following_search":1,"nb_hits_with_time_generation":44,"min_time_generation":"0.007","max_time_generation":"1.658","entry_nb_visits":3,"entry_nb_actions":14,"entry_sum_visit_length":2002,"entry_bounce_count":0,"exit_nb_visits":4,"avg_time_on_page":17,"bounce_rate":"0%","exit_rate":"29%","avg_time_generation":0.69,"idsubdatatable":1}],"2018-10-04":[{"label":"c","nb_visits":10,"nb_hits":20,"sum_time_spent":16,"nb_hits_with_time_generation":20,"min_time_generation":"0.013","max_time_generation":"1.568","entry_nb_visits":2,"entry_nb_actions":4,"entry_sum_visit_length":52,"entry_bounce_count":1,"exit_nb_visits":6,"avg_time_on_page":1,"bounce_rate":"50%","exit_rate":"60%","avg_time_generation":0.589,"idsubdatatable":1}],"2018-10-05":[{"label":"c","nb_visits":6,"nb_hits":6,"sum_time_spent":0,"nb_hits_with_time_generation":6,"min_time_generation":"0.299","max_time_generation":"106.964","entry_nb_visits":4,"entry_nb_actions":5,"entry_sum_visit_length":535,"entry_bounce_count":3,"exit_nb_visits":3,"avg_time_on_page":0,"bounce_rate":"75%","exit_rate":"50%","avg_time_generation":18.867,"idsubdatatable":1}],"2018-10-06":[{"label":"c","nb_visits":4,"nb_hits":5,"sum_time_spent":2,"nb_hits_with_time_generation":5,"min_time_generation":"0.274","max_time_generation":"1.649","entry_nb_visits":2,"entry_nb_actions":2,"entry_sum_visit_length":0,"entry_bounce_count":2,"exit_nb_visits":3,"avg_time_on_page":0,"bounce_rate":"100%","exit_rate":"75%","avg_time_generation":0.877,"idsubdatatable":1}],"2018-10-07":[{"label":"c","nb_visits":3,"nb_hits":12,"sum_time_spent":0,"nb_hits_with_time_generation":12,"min_time_generation":"0.26","max_time_generation":"0.48","exit_nb_visits":3,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"100%","avg_time_generation":0.407,"idsubdatatable":1}],"2018-10-08":[{"label":"c","nb_visits":4,"nb_hits":4,"sum_time_spent":0,"nb_hits_with_time_generation":4,"min_time_generation":"0.104","max_time_generation":"1.01","entry_nb_visits":1,"entry_nb_actions":5,"entry_sum_visit_length":997,"entry_bounce_count":0,"exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"25%","avg_time_generation":0.417,"idsubdatatable":1}],"2018-10-09":[{"label":"c","nb_visits":3,"nb_hits":4,"sum_time_spent":0,"nb_hits_with_time_generation":4,"min_time_generation":"0.132","max_time_generation":"0.217","entry_nb_visits":1,"entry_nb_actions":2,"entry_sum_visit_length":6,"entry_bounce_count":0,"exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"33%","avg_time_generation":0.156,"idsubdatatable":1}],"2018-10-10":[{"label":"c","nb_visits":5,"nb_hits":10,"sum_time_spent":2,"nb_hits_with_time_generation":10,"min_time_generation":"0.141","max_time_generation":"0.493","entry_nb_visits":1,"entry_nb_actions":2,"entry_sum_visit_length":57,"entry_bounce_count":0,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.289,"idsubdatatable":1}],"2018-10-11":[{"label":"c","nb_visits":6,"nb_hits":10,"sum_time_spent":0,"nb_hits_following_search":1,"nb_hits_with_time_generation":10,"min_time_generation":"0.042","max_time_generation":"1.035","exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"17%","avg_time_generation":0.523,"idsubdatatable":1}],"2018-10-12":[{"label":"c","nb_visits":2,"nb_hits":3,"sum_time_spent":0,"nb_hits_with_time_generation":3,"min_time_generation":"0.144","max_time_generation":"0.167","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.152,"idsubdatatable":1}],"2018-10-13":[{"label":"c","nb_visits":3,"nb_hits":6,"sum_time_spent":59,"nb_hits_with_time_generation":6,"min_time_generation":"0.394","max_time_generation":"0.991","avg_time_on_page":10,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.599,"idsubdatatable":1}],"2018-10-14":[],"2018-10-15":[{"label":"c","nb_visits":9,"nb_hits":19,"sum_time_spent":640,"nb_hits_with_time_generation":19,"min_time_generation":"0.019","max_time_generation":"3.03","entry_nb_visits":1,"entry_nb_actions":2,"entry_sum_visit_length":2,"entry_bounce_count":0,"exit_nb_visits":2,"avg_time_on_page":34,"bounce_rate":"0%","exit_rate":"22%","avg_time_generation":0.912,"idsubdatatable":1}],"2018-10-16":[{"label":"c","nb_visits":9,"nb_hits":16,"sum_time_spent":65,"nb_hits_with_time_generation":16,"min_time_generation":"0.195","max_time_generation":"0.854","exit_nb_visits":3,"avg_time_on_page":4,"bounce_rate":"0%","exit_rate":"33%","avg_time_generation":0.462,"idsubdatatable":1}],"2018-10-17":[{"label":"c","nb_visits":8,"nb_hits":12,"sum_time_spent":2,"nb_hits_with_time_generation":12,"min_time_generation":"0.119","max_time_generation":"0.376","entry_nb_visits":1,"entry_nb_actions":2,"entry_sum_visit_length":2,"entry_bounce_count":0,"exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"13%","avg_time_generation":0.248,"idsubdatatable":1}],"2018-10-18":[{"label":"c","nb_visits":21,"nb_hits":35,"sum_time_spent":117,"nb_hits_with_time_generation":35,"min_time_generation":"0.033","max_time_generation":"1.744","exit_nb_visits":5,"avg_time_on_page":3,"bounce_rate":"0%","exit_rate":"24%","avg_time_generation":0.404,"idsubdatatable":1}],"2018-10-19":[{"label":"c","nb_visits":10,"nb_hits":18,"sum_time_spent":3,"nb_hits_with_time_generation":18,"min_time_generation":"0.123","max_time_generation":"1.231","entry_nb_visits":1,"entry_nb_actions":3,"entry_sum_visit_length":37,"entry_bounce_count":0,"exit_nb_visits":4,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"40%","avg_time_generation":0.363,"idsubdatatable":1}],"2018-10-20":[{"label":"c","nb_visits":3,"nb_hits":5,"sum_time_spent":0,"nb_hits_with_time_generation":5,"min_time_generation":"0.329","max_time_generation":"0.653","avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"0%","avg_time_generation":0.553,"idsubdatatable":1}],"2018-10-21":[{"label":"c","nb_visits":2,"nb_hits":2,"sum_time_spent":0,"nb_hits_with_time_generation":2,"min_time_generation":"0.495","max_time_generation":"1.694","exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"50%","avg_time_generation":1.095,"idsubdatatable":1}],"2018-10-22":[{"label":"c","nb_visits":5,"nb_hits":12,"sum_time_spent":1,"nb_hits_following_search":1,"nb_hits_with_time_generation":12,"min_time_generation":"0.096","max_time_generation":"0.59","exit_nb_visits":1,"avg_time_on_page":0,"bounce_rate":"0%","exit_rate":"20%","avg_time_generation":0.237,"idsubdatatable":1}]}'
+    http_version: 
+  recorded_at: Wed, 24 Oct 2018 18:23:03 GMT
+recorded_with: VCR 4.0.0

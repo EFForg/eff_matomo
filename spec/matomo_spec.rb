@@ -9,7 +9,7 @@ RSpec.describe Matomo do
   describe "top pages" do
     subject do
       VCR.use_cassette("top_pages") do
-        Matomo::VisitedPage.where(base_path: "/c")
+        Matomo::Page.under_path("/c")
       end
     end
 
@@ -28,13 +28,23 @@ RSpec.describe Matomo do
     end
 
     it "survives empty inputs" do
-      Matomo::VisitedPage.new(nil, {})
+      Matomo::Page.new(nil, {})
+    end
+
+    it "returns views by day for a single page" do
+      VCR.use_cassette("page_views_over_time") do
+        subject = Matomo::Page.group_by_day("/c/support-bugs",
+                                        start_date: Time.new(2018, 9, 22),
+                                        end_date: Time.new(2018, 10, 22))
+        expect(subject.length).to eq(31)
+        expect(subject["2018-09-22"].hits).to eq(4)
+      end
     end
 
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_pages_access_denied") do
-          Matomo::VisitedPage.where(base_path: "/articles")
+          Matomo::Page.under_path("/articles")
         end
       end
 
