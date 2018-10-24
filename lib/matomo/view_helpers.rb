@@ -1,7 +1,7 @@
 module Matomo
   module ViewHelpers
     def matomo_tracking_url
-      "https://anon-stats.eff.org/js/?" + {
+      "#{Matomo.base_url}/js/?" + {
         idsite: Matomo.site_id,
         rec: 1,
         action_name: page_title,
