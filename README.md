@@ -65,6 +65,11 @@ pages.each() do |page|
   puts page.hits # Overall number of hits on the page
   puts page.visits # The number of distinct visits to the page
 end
+
+# Get views for a certain page, grouped by period (eg. hour, day)
+# Return format eg. { "2018-10-03": <Matomo::Page>, "2018-10-04": <Matomo::Page>, etc. }
+pages = Matomo::Page.group_by_period("/articles/harm-reduction",
+                                      start_date: Time.now - 1.month, end_date: Time.now)
 ```
 
 ## Development

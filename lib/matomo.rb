@@ -35,17 +35,14 @@ module Matomo
   end
 
   class VisitedPage
-    attr_accessor :label, :hits, :visits
+    attr_accessor :label, :hits, :visits, :path
 
-    def initialize(base_path, params)
-      @base_path = base_path
+    def initialize(path, params)
+      # puts params
+      @path = path
       @label = params["label"].sub!(/^\//, "") if params["label"]
       @hits = params["nb_hits"]
       @visits = params["nb_visits"]
-    end
-
-    def path
-      "/#{@base_path}/#{@label}"
     end
 
     def self.where(**args)
@@ -56,10 +53,24 @@ module Matomo
 
       resp = Matomo.get({
         method: "Actions.getPageUrls",
-        idSubtable: @subtables[base_path],
+        idSubtable: @subtables[base_path]
       })
       return [] if resp.response.code != "200"
-      resp.map{ |x| new(base_path, x) }
+      resp.map{ |x| new("/#{base_path}#{x["label"]}", x) }
+    end
+
+    ##
+    # Return format eg: { "2018-10-03": <Matomo::VisitedPage> }
+    def self.group_by_period(path, **args)
+      params = {
+        method: "Actions.getPageUrls",
+        segment: "pageUrl==#{Matomo.tracked_site_url}#{path}",
+        period: "day"
+      }.merge(Matomo.date_range_params(args[:start_date], args[:end_date]))
+
+      resp = Matomo.get(params)
+      return {} if resp.response.code != "200"
+      resp.transform_values{ |v| new(path, v.first || {}) }
     end
 
     def self.get_subtables
@@ -135,7 +146,6 @@ module Matomo
     end_date = end_date || Date.today
     start_date = start_date || end_date - 30.days
     {
-      period: "range",
       date: start_date.strftime(date_format) + "," + end_date.strftime(date_format)
     }
   end

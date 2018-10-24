@@ -31,6 +31,17 @@ RSpec.describe Matomo do
       Matomo::VisitedPage.new(nil, {})
     end
 
+    it "returns views over time for a single page" do
+      VCR.use_cassette("page_views_over_time") do
+        subject = Matomo::VisitedPage.group_by_period("/c/support-bugs",
+                                        start_date: Time.new(2018, 9, 22),
+                                        end_date: Time.new(2018, 10, 22))
+        expect(subject.length).to eq(31)
+        puts subject["2018-09-22"]
+        expect(subject["2018-09-22"].hits).to eq(4)
+      end
+    end
+
     describe "with access denied" do
       subject do
         VCR.use_cassette("top_pages_access_denied") do
