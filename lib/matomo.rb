@@ -38,7 +38,6 @@ module Matomo
     attr_accessor :label, :hits, :visits, :path
 
     def initialize(path, params)
-      # puts params
       @path = path
       @label = params["label"].sub!(/^\//, "") if params["label"]
       @hits = params["nb_hits"]
@@ -61,7 +60,7 @@ module Matomo
 
     ##
     # Return format eg: { "2018-10-03": <Matomo::Page> }
-    def self.group_by_period(path, **args)
+    def self.group_by_day(path, **args)
       params = {
         method: "Actions.getPageUrls",
         segment: "pageUrl==#{Matomo.tracked_site_url}#{path}",
