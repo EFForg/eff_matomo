@@ -10,8 +10,8 @@ module Matomo
 
     def initialize(params)
       @label = params["label"]
-      @visits = params["nb_visits"]
-      @actions = params["nb_actions"]
+      @visits = params["nb_visits"] || 0
+      @actions = params["nb_actions"] || 0
     end
 
     def actions_per_visit
@@ -40,8 +40,8 @@ module Matomo
     def initialize(path, params)
       @path = path
       @label = params["label"]
-      @hits = params["nb_hits"]
-      @visits = params["nb_visits"]
+      @hits = params["nb_hits"] || 0
+      @visits = params["nb_visits"] || 0
     end
 
     def label
