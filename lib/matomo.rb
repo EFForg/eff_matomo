@@ -8,7 +8,7 @@ module Matomo
   class Referrer
     attr_accessor :label, :visits
 
-    def initialize(params)
+    def initialize(params = {})
       @label = params["label"]
       @visits = params["nb_visits"] || 0
       @actions = params["nb_actions"] || 0
@@ -16,6 +16,7 @@ module Matomo
 
     def actions_per_visit
       return 0 unless @actions and @visits
+      return 0 if @visits == 0
       (@actions/@visits.to_f).round(1)
     end
 
@@ -37,7 +38,7 @@ module Matomo
   class Page
     attr_accessor :hits, :visits, :path
 
-    def initialize(path, params)
+    def initialize(path, params = {})
       @path = path
       @label = params["label"]
       @hits = params["nb_hits"] || 0

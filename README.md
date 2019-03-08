@@ -30,6 +30,8 @@ This gem reads two environment variables:
 
 Add `<%= matomo_tracking_embed %>` to the footer of your application layout template.
 
+`{action_name = [NAME]}` can be passed to set the action name manually. Otherwise, eff_matomo will attempt to use a `page_title` helper or else omit the action name.
+
 ### Displaying Matomo data
 
 This gem provides allows users to import site usage data from Matomo to display in their application. It currently supports two types of data:

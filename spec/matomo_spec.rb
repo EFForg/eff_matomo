@@ -82,7 +82,7 @@ RSpec.describe Matomo do
     end
 
     it "survives empty inputs" do
-      visit = Matomo::Referrer.new({})
+      visit = Matomo::Referrer.new()
       expect(visit.actions_per_visit).to eq(0)
     end
 
