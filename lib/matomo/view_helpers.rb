@@ -6,7 +6,7 @@ module Matomo
           tag(:img, src: matomo_tracking_url(opts), style: "border:0", alt: "")
         end +
         javascript_tag do
-          "document.getElementById('anon-stats').innerHTML = '<img src=\"#{matomo_tracking_url(opts)}\"?urlref=' + encodeURIComponent(document.referrer) + 'style=\"border:0\" alt=\"\" />';".html_safe
+          "document.getElementById('anon-stats').innerHTML = '<img src=\"#{matomo_tracking_url(opts)}&urlref=' + encodeURIComponent(document.referrer) + '\" style=\"border:0\" alt=\"\" />';".html_safe
         end
       end
     end
